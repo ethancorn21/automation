@@ -1,28 +1,21 @@
-## UTILITY TO ADD:
-## allow user to pick switch
-## menu for quick show commands
-##      option to allow for "custom" command to be sent
-## 
-
 from netmiko import ConnectHandler
-##net_connect is the connection handler
-net_connect = ConnectHandler(
+import getpass
+import os
+import dotenv
+from dotenv import load_dotenv
+
+load_dotenv()
+
+'''dsw1 = ConnectHandler(
     device_type="cisco_ios",
     host="10.0.99.1",
     username="admin",
     password="cisco.dsw1.2025",
-)
+)'''
+password = os.getenv("DSW1_PASS")
+username = os.getenv("DSW1_USER")
+print(password)
+print(username)
 
-def command_to_switch():
-    command = input("Please enter command to send to switch: ")
-    return net_connect.send_command(command)
-
-running = True
-while running:
-    if command_to_switch!="quit":
-        print(command_to_switch())
-    else:
-        break
-print("you have exited the switch")
-
-    
+# create a function that asks for device, then pings all other known
+#  IP's from that device
